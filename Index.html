@@ -1,0 +1,35 @@
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.innerHTML;
+    
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+    submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" ...>...</svg> Memproses Data...`;
+
+    // 1. Masukkan URL Google Web App yang Anda dapatkan di sini
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzZE_RJSBG6tEAAfoTna09rtsHV7bxTWMWuhCuIJc4qCGcAKAU41HF7UlYfhfQV20ph/exec'; 
+
+    // Gunakan FormData untuk mengambil data dari form
+    const formData = new FormData(form);
+
+    fetch(scriptURL, { method: 'POST', body: formData})
+        .then(response => response.json())
+        .then(data => {
+            if(data.result === 'success') {
+                document.getElementById('successModal').classList.remove('hidden');
+            } else {
+                alert("Terjadi kesalahan sistem: " + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("Gagal mengirim data. Pastikan koneksi internet stabil.");
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            submitBtn.innerHTML = originalText;
+        });
+});
