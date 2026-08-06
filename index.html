@@ -104,7 +104,7 @@
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor ID ( Tanpa SR/SM ) <span class="text-red-500">*</span></label>
+                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor ID <span class="text-red-500">*</span></label>
                             <input type="text" name="idNumber" required placeholder="6 Digit Angka"
                                 minlength="6" maxlength="6" pattern="\d{6}" title="Masukkan tepat 6 digit angka"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);"
@@ -113,8 +113,9 @@
                         
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
-                            <input type="text" name="fullName" required placeholder="Sesuai KTP"
-                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                            <input type="text" name="fullName" required placeholder="SESUAI KTP"
+                                oninput="this.value = this.value.toUpperCase();"
+                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none uppercase transition-all">
                         </div>
 
                         <div>
@@ -191,7 +192,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="sm:col-span-2">
                                     <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Status <span class="text-red-500">*</span></label>
-                                    <select name="familyRelation[]" required onchange="updateRelationDropdowns()" class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                    <select name="familyRelation[]" required onchange="updateRelationDropdowns()" class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
                                         <option value="" disabled selected>Pilih Status</option>
                                         <option value="Suami">Suami</option>
                                         <option value="Istri">Istri</option>
@@ -203,8 +204,9 @@
                                 
                                 <div>
                                     <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
-                                    <input type="text" name="familyName[]" required placeholder="Nama sesuai KK"
-                                        class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                    <input type="text" name="familyName[]" required placeholder="NAMA SESUAI KK"
+                                        oninput="this.value = this.value.toUpperCase();"
+                                        class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none uppercase transition-all">
                                 </div>
 
                                 <div>
@@ -468,10 +470,17 @@
                 formData.delete('fileKK');
                 formData.delete('fileKTP');
 
+                // Ubah format data (termasuk foto) agar lebih stabil dibaca oleh Google Apps Script
+                const urlEncodedData = new URLSearchParams();
+                for (const pair of formData.entries()) {
+                    urlEncodedData.append(pair[0], pair[1]);
+                }
+
                 // Eksekusi pengiriman via background
-                const response = await fetch(scriptURL, { 
+                await fetch(scriptURL, { 
                     method: 'POST', 
-                    body: formData
+                    body: urlEncodedData,
+                    mode: 'no-cors' // BARIS INI WAJIB ADA: Mencegah error blokir CORS dari Browser
                 });
 
                 // Menampilkan Modal sukses jika request berhasil terkirim
@@ -479,7 +488,8 @@
 
             } catch (error) {
                 console.error('Error!', error.message);
-                // Fallback: Tampilkan sukses meskipun kadang ada masalah response format (CORS) dari Google
+                // Fallback: Tampilkan sukses atau beri peringatan
+                alert("Proses terkendala koneksi, namun data mungkin telah terkirim. Silakan cek dengan admin HR.");
                 document.getElementById('successModal').classList.remove('hidden');
             } finally {
                 // Kembalikan tombol ke kondisi semula
