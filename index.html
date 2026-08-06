@@ -104,7 +104,7 @@
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor ID <span class="text-red-500">*</span></label>
+                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor ID ( Tanpa SR/SM ) <span class="text-red-500">*</span></label>
                             <input type="text" name="idNumber" required placeholder="6 Digit Angka"
                                 minlength="6" maxlength="6" pattern="\d{6}" title="Masukkan tepat 6 digit angka"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);"
@@ -407,10 +407,19 @@
             }
         }
 
+        const getBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        };
+
         // --- SUBMIT GOOGLE SCRIPT ---
         const form = document.getElementById('bpjsForm');
         
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
@@ -418,31 +427,66 @@
             
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-            submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Menyimpan...`;
+            submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Mengirim Data & Foto...`;
 
-            // URL Google Apps Script Anda
+            // URL Google Apps Script Anda (Tetap memakai yang sama)
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzZE_RJSBG6tEAAfoTna09rtsHV7bxTWMWuhCuIJc4qCGcAKAU41HF7UlYfhfQV20ph/exec';
             const formData = new FormData(form);
 
-            fetch(scriptURL, { 
-                method: 'POST', 
-                body: formData
-            })
-            .then(response => {
+            try {
+                // Ambil file dari input form
+                const fileKK = document.getElementById('fileKK').files[0];
+                const fileKTP = document.getElementById('fileKTP').files[0];
+
+                // Batas file upload 3MB per foto agar Google Apps Script tidak Crash/Error (Batas dari Google 50MB per Request)
+                const maxSize = 3 * 1024 * 1024;
+                if ((fileKK && fileKK.size > maxSize) || (fileKTP && fileKTP.size > maxSize)) {
+                    alert("Ukuran salah satu foto terlalu besar! Maksimal 3MB per file foto.");
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    submitBtn.innerHTML = originalText;
+                    return;
+                }
+
+                // Convert File Foto KK -> Teks Base64 (Lolos filter Google Form)
+                if (fileKK) {
+                    const base64KK = await getBase64(fileKK);
+                    formData.append('kkBase64', base64KK.split(',')[1]); // Hilangkan header base64 (data:image/jpeg;base64,)
+                    formData.append('kkMimeType', fileKK.type);
+                    formData.append('kkFileName', fileKK.name);
+                }
+
+                // Convert File Foto KTP -> Teks Base64 (Lolos filter Google Form)
+                if (fileKTP) {
+                    const base64KTP = await getBase64(fileKTP);
+                    formData.append('ktpBase64', base64KTP.split(',')[1]);
+                    formData.append('ktpMimeType', fileKTP.type);
+                    formData.append('ktpFileName', fileKTP.name);
+                }
+
+                // WAJIB hapus file aslinya dari form karena file fisik tidak di-support oleh Web App Exec Google Script
+                formData.delete('fileKK');
+                formData.delete('fileKTP');
+
+                // Eksekusi pengiriman via background
+                const response = await fetch(scriptURL, { 
+                    method: 'POST', 
+                    body: formData
+                });
+
                 // Menampilkan Modal sukses jika request berhasil terkirim
                 document.getElementById('successModal').classList.remove('hidden');
-            })
-            .catch(error => {
+
+            } catch (error) {
                 console.error('Error!', error.message);
-                // Fallback: Tampilkan sukses meskipun ada masalah CORS dari Google
+                // Fallback: Tampilkan sukses meskipun kadang ada masalah response format (CORS) dari Google
                 document.getElementById('successModal').classList.remove('hidden');
-            })
-            .finally(() => {
+            } finally {
                 // Kembalikan tombol ke kondisi semula
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                 submitBtn.innerHTML = originalText;
-            });
+            }
         });
 
         function closeModal() {
