@@ -105,7 +105,9 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor ID <span class="text-red-500">*</span></label>
-                            <input type="text" name="idNumber" required placeholder="Contoh: HL-12345"
+                            <input type="text" name="idNumber" required placeholder="6 Digit Angka"
+                                minlength="6" maxlength="6" pattern="\d{6}" title="Masukkan tepat 6 digit angka"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);"
                                 class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
                         </div>
                         
@@ -117,8 +119,9 @@
 
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">NIK KTP <span class="text-red-500">*</span></label>
-                            <input type="number" name="nik" required minlength="16" maxlength="16" placeholder="16 Digit Angka"
-                                oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16);"
+                            <input type="text" name="nik" required placeholder="16 Digit Angka"
+                                minlength="16" maxlength="16" pattern="\d{16}" title="Masukkan tepat 16 digit angka"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);"
                                 class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
                         </div>
                         
@@ -206,8 +209,9 @@
 
                                 <div>
                                     <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">NIK (16 Digit) <span class="text-red-500">*</span></label>
-                                    <input type="number" name="familyNik[]" required minlength="16" maxlength="16" placeholder="Angka NIK KTP/KK"
-                                        oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16);"
+                                    <input type="text" name="familyNik[]" required placeholder="16 Digit Angka"
+                                        minlength="16" maxlength="16" pattern="\d{16}" title="Masukkan tepat 16 digit angka"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);"
                                         class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
                                 </div>
                             </div>
