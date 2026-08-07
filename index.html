@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BPJS Kesehatan Keluarga | Hop Lun</title>
+    <link rel="icon" type="image/x-icon" href="hoplun.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -56,12 +57,19 @@
             
             <!-- ===================== BAGIAN 1: FORM PENDAFTARAN ===================== -->
             <div id="sectionForm" class="block animate-fade-in">
+                
+                <!-- Kotak Informasi Wajib Isi -->
+                <div class="bg-amber-50 border border-amber-200 text-amber-800 text-[11px] sm:text-xs px-4 py-2.5 rounded-lg mb-6 flex items-start gap-2 shadow-sm">
+                    <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="font-medium">Semua kolom bertanda bintang (<span class="text-red-500 font-bold">*</span>) wajib diisi sesuai dengan data KTP atau Kartu Keluarga ( KK ).</p>
+                </div>
+
                 <form id="bpjsForm" class="space-y-6 sm:space-y-8">
                     <div>
                         <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2 mb-4 flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">1</span> Data Utama</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nomor ID <span class="text-red-500">*</span></label>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nomor ID ( Tanpa SR/SM ) <span class="text-red-500">*</span></label>
                                 <input type="text" name="idNumber" required placeholder="6 Angka" minlength="6" maxlength="6" pattern="\d{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
                             </div>
                             <div>
@@ -109,7 +117,7 @@
                     </div>
 
                     <div>
-                        <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2 mb-4 flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">3</span> Lampiran</h2>
+                        <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2 mb-4 flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">3</span> Lampiran (Max 3 MB) </h2>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="fileKK" class="flex flex-col items-center p-3 border-2 border-dashed border-slate-200 rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50">
@@ -187,7 +195,7 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <h3 class="text-base font-bold text-slate-900 mb-1">Berhasil Terkirim!</h3>
-            <p class="text-xs text-slate-500 mb-4">Data pendaftaran telah masuk ke sistem. Silakan cek status secara berkala.</p>
+            <p class="text-xs text-slate-500 mb-4">Data pendaftaran telah masuk ke sistem. Silakan cek status secara berkala atau bisa dicek diAplikasi JKN Mobile</p>
             <button onclick="closeModal()" class="w-full bg-slate-800 text-white rounded-lg py-2 text-sm font-bold">Selesai</button>
         </div>
     </div>
