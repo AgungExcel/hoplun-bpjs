@@ -3,486 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Formulir Pendaftaran BPJS Kesehatan Keluarga | Hop Lun</title>
+    <title>BPJS Kesehatan Keluarga | Hop Lun</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#0284c7',
-                        primaryDark: '#0369a1',
-                        secondary: '#10b981', 
-                    }
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], },
+                    colors: { primary: '#0284c7', secondary: '#10b981', }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #f4f7f9;
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
+        body { background-color: #f4f7f9; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 24px 24px; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 25px -5px rgba(0,0,0,0.05);
-        }
-        input, select { transition: all 0.2s ease-in-out; }
-        input:focus, select:focus {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px -4px rgba(2, 132, 199, 0.15);
-        }
+        .glass-card { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 25px -5px rgba(0,0,0,0.05); }
+        .tab-active { border-bottom-width: 2px; border-color: #0284c7; color: #0284c7; font-weight: 700; }
+        .tab-inactive { color: #64748b; font-weight: 500; border-bottom-width: 2px; border-color: transparent; }
         .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="min-h-screen py-4 px-3 sm:py-8 sm:px-6 font-sans text-slate-800 flex flex-col items-center">
 
     <div class="fixed top-0 left-0 w-full h-72 bg-gradient-to-b from-primary/5 to-transparent -z-10"></div>
 
-    <div class="w-full max-w-3xl mx-auto glass-card rounded-2xl overflow-hidden animate-fade-in border border-slate-100">
-        
-        <div class="bg-white border-b border-slate-100 px-5 py-4 sm:px-8 sm:py-5 relative overflow-hidden flex flex-row items-center justify-between gap-4">
+    <div class="w-full max-w-2xl mx-auto glass-card rounded-2xl overflow-hidden animate-fade-in border border-slate-100">
+        <div class="bg-white px-5 py-4 sm:px-8 sm:py-5 relative flex items-center justify-between gap-4">
             <div class="absolute top-0 left-0 w-1.5 h-full bg-primary"></div>
-            
-            <div class="flex-shrink-0">
-                <img src="hoplun 2.jpg" alt="Logo Hop Lun" class="h-10 sm:h-12 w-auto object-contain rounded drop-shadow-sm" onerror="this.src='https://placehold.co/120x40/fce7f3/db2777?text=HOP+LUN'">
-            </div>
-            
+            <img src="hoplun 2.jpg" alt="Logo Hop Lun" class="h-10 sm:h-12 w-auto object-contain rounded drop-shadow-sm" onerror="this.src='https://placehold.co/100x40?text=Hop+Lun'">
             <div class="text-center flex-grow">
-                <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 leading-tight">Pendaftaran BPJS Kesehatan</h1>
-                <p class="text-[10px] sm:text-xs font-bold text-primary mt-0.5 uppercase tracking-widest">Keluarga (Suami/Istri/Anak)</p>
+                <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 leading-tight">BPJS Kesehatan</h1>
+                <p class="text-[10px] sm:text-xs font-bold text-primary mt-0.5 uppercase tracking-widest">Keluarga Karyawan</p>
             </div>
-            
-            <div class="flex-shrink-0">
-                 <img src="BPJS Kesehatan Logo.png" alt="Logo BPJS Kesehatan" class="h-8 sm:h-10 w-auto object-contain drop-shadow-sm" onerror="this.src='https://placehold.co/120x40/16a34a/ffffff?text=BPJS'">
-            </div>
+            <img src="BPJS Kesehatan Logo.png" alt="BPJS" class="h-8 sm:h-10 w-auto object-contain drop-shadow-sm" onerror="this.src='https://placehold.co/100x40?text=BPJS'">
         </div>
 
-        <div class="px-5 py-6 sm:p-8 bg-white/40">
-            <div class="mb-6 bg-blue-50/50 border border-blue-100 rounded-lg p-3 flex gap-3 text-xs sm:text-sm text-blue-800">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <div class="leading-relaxed">
-                    Semua kolom bertanda bintang (<span class="text-red-500">*</span>) wajib diisi. NIK wajib 16 digit & ID 6 digit.
+        <div class="flex bg-slate-50 border-y border-slate-100 px-4 pt-2">
+            <button onclick="switchTab('form')" id="tabForm" class="flex-1 pb-3 text-sm transition-all tab-active">
+                📝 Isi Formulir
+            </button>
+            <button onclick="switchTab('track')" id="tabTrack" class="flex-1 pb-3 text-sm transition-all tab-inactive hover:text-slate-800">
+                🔍 Cek Status
+            </button>
+        </div>
+
+        <div class="p-5 sm:p-8 bg-white/40 min-h-[400px]">
+            
+            <!-- ===================== BAGIAN 1: FORM PENDAFTARAN ===================== -->
+            <div id="sectionForm" class="block animate-fade-in">
+                <form id="bpjsForm" class="space-y-6 sm:space-y-8">
+                    <div>
+                        <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2 mb-4 flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">1</span> Data Utama</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nomor ID <span class="text-red-500">*</span></label>
+                                <input type="text" name="idNumber" required placeholder="6 Angka" minlength="6" maxlength="6" pattern="\d{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nama Karyawan <span class="text-red-500">*</span></label>
+                                <input type="text" name="fullName" required placeholder="SESUAI KTP" oninput="this.value = this.value.toUpperCase();" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary uppercase transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">NIK KTP <span class="text-red-500">*</span></label>
+                                <input type="text" name="nik" required placeholder="16 Angka" minlength="16" maxlength="16" pattern="\d{16}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Departemen <span class="text-red-500">*</span></label>
+                                <select name="department" required class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all cursor-pointer">
+                                    <option value="" disabled selected>-- Pilih --</option>
+                                    <option value="CUTTING">CUTTING</option><option value="FINANCE">FINANCE</option><option value="IE">IE</option><option value="IT">IT</option><option value="LOGISTICS">LOGISTICS</option><option value="MECHANIC">MECHANIC</option><option value="MOLDING">MOLDING</option><option value="OPERATIONAL CONTROL">OPERATIONAL CONTROL</option><option value="PACKING">PACKING</option><option value="PEOPLE & CULTURE">PEOPLE & CULTURE</option><option value="PMC">PMC</option><option value="PRODUCTION">PRODUCTION</option><option value="QA">QA</option><option value="QC">QC</option><option value="RAW MATERIALS WAREHOUSE">RAW MATERIALS WAREHOUSE</option><option value="SAMPLE ROOM">SAMPLE ROOM</option><option value="SEWING">SEWING</option><option value="SOURCING & PURCHASING">SOURCING & PURCHASING</option><option value="SUSTAINABILITY">SUSTAINABILITY</option><option value="TECHNICAL">TECHNICAL</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">No. HP Aktif <span class="text-red-500">*</span></label>
+                                <input type="tel" name="phoneNumber" required placeholder="081234567890" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-4">
+                            <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">2</span> Keluarga</h2>
+                            <button type="button" onclick="addFamilyMember()" id="btnAddFamily" class="px-2 py-1 text-[11px] font-bold text-primary bg-blue-50 border border-blue-100 rounded hover:bg-blue-100">
+                                + Tambah Anggota
+                            </button>
+                        </div>
+                        <div id="familyMembersContainer" class="space-y-4">
+                            <div class="family-member-card bg-slate-50 border border-slate-200 rounded-lg p-4 relative">
+                                <button type="button" onclick="removeFamilyMember(this)" class="remove-btn absolute top-3 right-3 hidden text-slate-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                                <h4 class="text-xs font-bold text-slate-700 mb-3">Anggota <span class="member-index">1</span></h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div class="sm:col-span-2">
+                                        <select name="familyRelation[]" required onchange="updateRelationDropdowns()" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary"><option value="" disabled selected>Status Hubungan</option><option value="Suami">Suami</option><option value="Istri">Istri</option><option value="Anak Ke-1">Anak Ke-1</option><option value="Anak Ke-2">Anak Ke-2</option><option value="Anak Ke-3">Anak Ke-3</option></select>
+                                    </div>
+                                    <div><input type="text" name="familyName[]" required placeholder="NAMA (Huruf Besar)" oninput="this.value = this.value.toUpperCase();" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary uppercase"></div>
+                                    <div><input type="text" name="familyNik[]" required placeholder="NIK 16 Angka" minlength="16" maxlength="16" pattern="\d{16}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2 mb-4 flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">3</span> Lampiran</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="fileKK" class="flex flex-col items-center p-3 border-2 border-dashed border-slate-200 rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50">
+                                    <span class="text-[11px] font-bold text-slate-500 mb-1">FOTO KK</span>
+                                    <input id="fileKK" type="file" class="hidden" accept="image/*" required onchange="updateFileName(this, 'kkFileName')" />
+                                    <span id="kkFileName" class="text-[10px] text-primary truncate max-w-full font-medium">Klik untuk upload</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label for="fileKTP" class="flex flex-col items-center p-3 border-2 border-dashed border-slate-200 rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50">
+                                    <span class="text-[11px] font-bold text-slate-500 mb-1">FOTO KTP</span>
+                                    <input id="fileKTP" type="file" class="hidden" accept="image/*" required onchange="updateFileName(this, 'ktpFileName')" />
+                                    <span id="ktpFileName" class="text-[10px] text-primary truncate max-w-full font-medium">Klik untuk upload</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full py-3 px-6 rounded-xl text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 transition-all active:scale-[0.98]">
+                        Kirim Pendaftaran
+                    </button>
+                </form>
+            </div>
+
+            <!-- ===================== BAGIAN 2: CEK STATUS / MONITORING ===================== -->
+            <div id="sectionTrack" class="hidden animate-fade-in">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-primary mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h2 class="text-base font-bold text-slate-900">Pantau Proses Pendaftaran</h2>
+                    <p class="text-xs text-slate-500 mt-1">Masukkan Nomor ID Karyawan Anda untuk mengecek status pendaftaran BPJS.</p>
+                </div>
+
+                <div class="relative max-w-sm mx-auto mb-8">
+                    <input type="text" id="trackIdNumber" placeholder="Contoh: 123456" minlength="6" maxlength="6" pattern="\d{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);" class="block w-full pl-4 pr-12 py-3 rounded-xl border-2 border-slate-200 bg-white text-sm outline-none focus:border-primary transition-all shadow-sm">
+                    <button onclick="checkStatus()" id="btnTrack" class="absolute right-2 top-2 bottom-2 aspect-square flex items-center justify-center bg-primary text-white rounded-lg hover:bg-primaryDark transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Kontainer Hasil Pencarian -->
+                <div id="trackResult" class="hidden border border-slate-100 rounded-xl overflow-hidden bg-white shadow-sm">
+                    <div class="bg-slate-800 p-4 text-white">
+                        <h3 id="resName" class="font-bold text-sm">NAMA KARYAWAN</h3>
+                        <p id="resDept" class="text-[11px] text-slate-300">DEPARTEMEN</p>
+                    </div>
+                    <div class="p-0">
+                        <ul id="resList" class="divide-y divide-slate-100">
+                            <!-- Hasil akan disuntikkan dari Javascript -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Pesan Tidak Ditemukan -->
+                <div id="trackNotFound" class="hidden text-center py-8">
+                    <svg class="w-10 h-10 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="text-sm font-bold text-slate-700">Data tidak ditemukan</p>
+                    <p class="text-xs text-slate-500 mt-1">Pastikan ID benar atau Anda belum mendaftar.</p>
                 </div>
             </div>
 
-            <form id="bpjsForm" class="space-y-6 sm:space-y-8">
-                
-                <!-- SECTION 1: Data Karyawan -->
-                <div>
-                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-2">
-                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 text-white text-xs font-bold">1</span>
-                        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Data Karyawan Utama</h2>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor ID <span class="text-red-500">*</span></label>
-                            <input type="text" name="idNumber" required placeholder="6 Digit Angka"
-                                minlength="6" maxlength="6" pattern="\d{6}" title="Masukkan tepat 6 digit angka"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);"
-                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
-                            <input type="text" name="fullName" required placeholder="SESUAI KTP"
-                                oninput="this.value = this.value.toUpperCase();"
-                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none uppercase transition-all">
-                        </div>
-
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">NIK KTP <span class="text-red-500">*</span></label>
-                            <input type="text" name="nik" required placeholder="16 Digit Angka"
-                                minlength="16" maxlength="16" pattern="\d{16}" title="Masukkan tepat 16 digit angka"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);"
-                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Departemen <span class="text-red-500">*</span></label>
-                            <select name="department" required class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer">
-                                <option value="" disabled selected>-- Pilih --</option>
-                                <option value="CUTTING">CUTTING</option>
-                                <option value="FINANCE">FINANCE</option>
-                                <option value="IE">IE</option>
-                                <option value="IT">IT</option>
-                                <option value="LOGISTICS">LOGISTICS</option>
-                                <option value="MECHANIC">MECHANIC</option>
-                                <option value="MOLDING">MOLDING</option>
-                                <option value="OPERATIONAL CONTROL">OPERATIONAL CONTROL</option>
-                                <option value="PACKING">PACKING</option>
-                                <option value="PEOPLE & CULTURE">PEOPLE & CULTURE</option>
-                                <option value="PMC">PMC</option>
-                                <option value="PRODUCTION">PRODUCTION</option>
-                                <option value="QA">QA</option>
-                                <option value="QC">QC</option>
-                                <option value="RAW MATERIALS WAREHOUSE">RAW MATERIALS WAREHOUSE</option>
-                                <option value="SAMPLE ROOM">SAMPLE ROOM</option>
-                                <option value="SEWING">SEWING</option>
-                                <option value="SOURCING & PURCHASING">SOURCING & PURCHASING</option>
-                                <option value="SUSTAINABILITY">SUSTAINABILITY</option>
-                                <option value="TECHNICAL">TECHNICAL</option>
-                            </select>
-                        </div>
-                        
-                        <div class="sm:col-span-2">
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nomor HP <span class="text-red-500">*</span></label>
-                            <input type="tel" name="phoneNumber" required placeholder="081234567890"
-                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECTION 2: Data Anggota Keluarga -->
-                <div>
-                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-2">
-                        <div class="flex items-center gap-2">
-                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 text-white text-xs font-bold">2</span>
-                            <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Data Keluarga</h2>
-                        </div>
-                        <button type="button" onclick="addFamilyMember()" id="btnAddFamily" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold text-primary bg-blue-50 border border-blue-100 rounded-md hover:bg-blue-100 transition-colors">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                            Tambah Anggota
-                        </button>
-                    </div>
-
-                    <div id="familyMembersContainer" class="space-y-4">
-                        <div class="family-member-card bg-slate-50/50 border border-slate-200 rounded-xl p-3 sm:p-4 relative">
-                            <div class="absolute top-3 right-3 hidden remove-btn">
-                                <button type="button" onclick="removeFamilyMember(this)" class="text-slate-400 hover:text-red-500 bg-white rounded-md p-1 shadow-sm transition-colors border border-slate-100">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                                </button>
-                            </div>
-                            
-                            <h4 class="text-xs font-bold text-slate-700 mb-3 flex items-center gap-1.5">
-                                <span class="w-1.5 h-3 bg-secondary rounded-full block"></span>
-                                Anggota <span class="member-index">1</span>
-                            </h4>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div class="sm:col-span-2">
-                                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Status <span class="text-red-500">*</span></label>
-                                    <select name="familyRelation[]" required onchange="updateRelationDropdowns()" class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
-                                        <option value="" disabled selected>Pilih Status</option>
-                                        <option value="Suami">Suami</option>
-                                        <option value="Istri">Istri</option>
-                                        <option value="Anak Ke-1">Anak Ke-1</option>
-                                        <option value="Anak Ke-2">Anak Ke-2</option>
-                                        <option value="Anak Ke-3">Anak Ke-3</option>
-                                    </select>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
-                                    <input type="text" name="familyName[]" required placeholder="NAMA SESUAI KK"
-                                        oninput="this.value = this.value.toUpperCase();"
-                                        class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none uppercase transition-all">
-                                </div>
-
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">NIK (16 Digit) <span class="text-red-500">*</span></label>
-                                    <input type="text" name="familyNik[]" required placeholder="16 Digit Angka"
-                                        minlength="16" maxlength="16" pattern="\d{16}" title="Masukkan tepat 16 digit angka"
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);"
-                                        class="block w-full rounded-lg border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECTION 3: Lampiran -->
-                <div>
-                    <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-2">
-                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 text-white text-xs font-bold">3</span>
-                        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Lampiran Dokumen</h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Foto KK <span class="text-red-500">*</span></label>
-                            <label for="fileKK" class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-200 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50 transition-colors group">
-                                <div class="flex flex-col items-center justify-center pt-2">
-                                    <svg class="w-6 h-6 text-slate-400 mb-1 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-                                    <p class="text-xs text-slate-500 font-medium">Klik Upload KK</p>
-                                </div>
-                                <input id="fileKK" name="fileKK" type="file" class="hidden" accept="image/*,.pdf" required onchange="updateFileName(this, 'kkFileName')" />
-                            </label>
-                            <div id="kkFileNameContainer" class="mt-2 hidden items-center gap-1.5 text-primary bg-blue-50 px-2 py-1 rounded text-xs">
-                                <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                <span id="kkFileName" class="truncate font-semibold"></span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Foto KTP <span class="text-red-500">*</span></label>
-                            <label for="fileKTP" class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-200 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50 transition-colors group">
-                                <div class="flex flex-col items-center justify-center pt-2">
-                                    <svg class="w-6 h-6 text-slate-400 mb-1 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                                    <p class="text-xs text-slate-500 font-medium">Klik Upload KTP</p>
-                                </div>
-                                <input id="fileKTP" name="fileKTP" type="file" class="hidden" accept="image/*,.pdf" required onchange="updateFileName(this, 'ktpFileName')" />
-                            </label>
-                            <div id="ktpFileNameContainer" class="mt-2 hidden items-center gap-1.5 text-primary bg-blue-50 px-2 py-1 rounded text-xs">
-                                <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                <span id="ktpFileName" class="truncate font-semibold"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit" id="submitBtn" class="w-full flex justify-center items-center gap-2 py-3 px-6 rounded-xl shadow-md text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800 transition-all active:scale-[0.98]">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        Kirim Pendaftaran
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
     
-    <div class="mt-6 text-center text-xs text-slate-400 font-medium pb-6">
+    <div class="mt-6 text-center text-[10px] text-slate-400 font-medium pb-6">
         &copy; 2026 Hop Lun. People and Culture Department.
     </div>
 
-    <!-- Modal Sukses -->
-    <div id="successModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-center justify-center min-h-screen p-4 text-center">
-            <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" aria-hidden="true"></div>
-            
-            <div class="inline-block bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all align-middle max-w-sm w-full animate-fade-in border border-slate-100 relative z-10">
-                <div class="px-5 pt-6 pb-5 text-center">
-                    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-100 mb-4">
-                        <svg class="h-8 w-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Data Terkirim!</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Formulir pendaftaran BPJS telah berhasil direkam. Tim HR akan memproses data Anda.
-                    </p>
-                </div>
-                <div class="bg-slate-50 px-5 py-3 flex justify-center">
-                    <button type="button" onclick="closeModal()" class="w-full inline-flex justify-center rounded-lg px-4 py-2 bg-slate-800 text-sm font-bold text-white hover:bg-slate-700 transition-colors">
-                        Selesai
-                    </button>
-                </div>
+    <!-- Modal Sukses Submit -->
+    <div id="successModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+        <div class="bg-white rounded-2xl p-6 text-center shadow-xl max-w-xs w-full relative z-10 animate-fade-in">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
+            <h3 class="text-base font-bold text-slate-900 mb-1">Berhasil Terkirim!</h3>
+            <p class="text-xs text-slate-500 mb-4">Data pendaftaran telah masuk ke sistem. Silakan cek status secara berkala.</p>
+            <button onclick="closeModal()" class="w-full bg-slate-800 text-white rounded-lg py-2 text-sm font-bold">Selesai</button>
         </div>
     </div>
 
     <script>
-        const MAX_FAMILY_MEMBERS = 4;
-        let memberCount = 1;
+        // PASTIKAN GANTI DENGAN URL DEPLOYMENT BARU ANDA!
+        const scriptURL = 'PASTE_URL_GOOGLE_APPS_SCRIPT_VERSI_BARU_DI_SINI'; 
+        
+        function switchTab(tabId) {
+            const formSection = document.getElementById('sectionForm');
+            const trackSection = document.getElementById('sectionTrack');
+            const tabForm = document.getElementById('tabForm');
+            const tabTrack = document.getElementById('tabTrack');
 
+            if (tabId === 'form') {
+                formSection.classList.remove('hidden'); trackSection.classList.add('hidden');
+                tabForm.className = "flex-1 pb-3 text-sm transition-all tab-active";
+                tabTrack.className = "flex-1 pb-3 text-sm transition-all tab-inactive hover:text-slate-800";
+            } else {
+                formSection.classList.add('hidden'); trackSection.classList.remove('hidden');
+                tabTrack.className = "flex-1 pb-3 text-sm transition-all tab-active";
+                tabForm.className = "flex-1 pb-3 text-sm transition-all tab-inactive hover:text-slate-800";
+            }
+        }
+
+        let memberCount = 1;
         function updateRelationDropdowns() {
             const selects = Array.from(document.querySelectorAll('select[name="familyRelation[]"]'));
-            
             selects.forEach((currentSelect, currentIndex) => {
-                const otherValues = selects
-                    .filter((_, idx) => idx !== currentIndex)
-                    .map(s => s.value)
-                    .filter(v => v !== "");
-                
+                const otherValues = selects.filter((_, idx) => idx !== currentIndex).map(s => s.value).filter(v => v !== "");
                 const otherHasPartner = otherValues.includes('Suami') || otherValues.includes('Istri');
-
                 Array.from(currentSelect.options).forEach(opt => {
                     if (opt.value === "") return;
-                    
-                    if (opt.value === 'Suami' || opt.value === 'Istri') {
-                        opt.disabled = otherHasPartner;
-                    } else {
-                        opt.disabled = otherValues.includes(opt.value);
-                    }
+                    if (opt.value === 'Suami' || opt.value === 'Istri') opt.disabled = otherHasPartner;
+                    else opt.disabled = otherValues.includes(opt.value);
                 });
             });
         }
 
         function addFamilyMember() {
-            if (memberCount >= MAX_FAMILY_MEMBERS) {
-                alert("Maksimal 4 anggota (1 Pasangan + 3 Anak).");
-                return;
-            }
-
+            if (memberCount >= 4) { alert("Maksimal 4 anggota!"); return; }
             const container = document.getElementById('familyMembersContainer');
-            const originalCard = container.querySelector('.family-member-card');
-            const newCard = originalCard.cloneNode(true);
-            
-            const inputs = newCard.querySelectorAll('input');
-            inputs.forEach(input => input.value = '');
-            const select = newCard.querySelector('select');
-            select.selectedIndex = 0;
-
+            const newCard = container.querySelector('.family-member-card').cloneNode(true);
+            newCard.querySelectorAll('input').forEach(input => input.value = '');
+            newCard.querySelector('select').selectedIndex = 0;
             memberCount++;
             newCard.querySelector('.member-index').textContent = memberCount;
             newCard.querySelector('.remove-btn').classList.remove('hidden');
-            
-            newCard.classList.remove('animate-fade-in'); 
-            void newCard.offsetWidth; 
-            newCard.classList.add('animate-fade-in');
-
             container.appendChild(newCard);
-            updateButtons();
+            if (memberCount >= 4) document.getElementById('btnAddFamily').classList.add('opacity-50', 'pointer-events-none');
             updateRelationDropdowns();
         }
 
         function removeFamilyMember(btn) {
             if(memberCount > 1) {
-                const card = btn.closest('.family-member-card');
-                card.remove();
+                btn.closest('.family-member-card').remove();
                 memberCount--;
-                
                 const cards = document.querySelectorAll('.family-member-card');
-                cards.forEach((c, index) => {
-                    c.querySelector('.member-index').textContent = index + 1;
-                    if(index === 0 && cards.length === 1) {
-                        c.querySelector('.remove-btn').classList.add('hidden');
-                    }
+                cards.forEach((c, i) => { 
+                    c.querySelector('.member-index').textContent = i + 1;
+                    if(i === 0 && cards.length === 1) c.querySelector('.remove-btn').classList.add('hidden');
                 });
-                updateButtons();
+                document.getElementById('btnAddFamily').classList.remove('opacity-50', 'pointer-events-none');
                 updateRelationDropdowns(); 
             }
         }
 
-        function updateButtons() {
-            const btnAdd = document.getElementById('btnAddFamily');
-            if (memberCount >= MAX_FAMILY_MEMBERS) {
-                btnAdd.classList.add('opacity-50', 'pointer-events-none');
-            } else {
-                btnAdd.classList.remove('opacity-50', 'pointer-events-none');
-            }
+        function updateFileName(input, id) {
+            document.getElementById(id).textContent = input.files[0] ? input.files[0].name : 'Klik untuk upload';
+            if(input.files[0]) input.closest('label').classList.add('border-primary');
+            else input.closest('label').classList.remove('border-primary');
         }
 
-        function updateFileName(input, textElementId) {
-            const container = document.getElementById(textElementId + 'Container');
-            const textElement = document.getElementById(textElementId);
-            const label = input.closest('label');
-            
-            if (input.files && input.files[0]) {
-                textElement.textContent = input.files[0].name;
-                container.classList.remove('hidden');
-                container.classList.add('flex');
-                label.classList.add('border-primary', 'bg-blue-50');
-            } else {
-                container.classList.add('hidden');
-                container.classList.remove('flex');
-                label.classList.remove('border-primary', 'bg-blue-50');
-            }
-        }
+        const getBase64 = (file) => new Promise((resolve, reject) => {
+            const reader = new FileReader(); reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result); reader.onerror = error => reject(error);
+        });
 
-        const getBase64 = (file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
-            });
-        };
-
-        const form = document.getElementById('bpjsForm');
-        
-        form.addEventListener('submit', async function(e) {
+        document.getElementById('bpjsForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-            submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Mengirim Data...`;
-
-            // URL BARU ANDA DITAMBAHKAN DISINI
-            const scriptURL = 'https://script.google.com/macros/s/AKfycby_EiXDowY3rhfbDV5mQHjoZPlagtO7QJO-aSUEjs0EHMwRZDYtZdGmYVNIOqkxDj6-pA/exec';
-            const formData = new FormData(form);
+            const btn = document.getElementById('submitBtn'); const oriText = btn.innerHTML;
+            btn.disabled = true; btn.innerHTML = 'Memproses...'; btn.classList.add('opacity-70');
 
             try {
+                const formData = new URLSearchParams(new FormData(this));
+                
                 const fileKK = document.getElementById('fileKK').files[0];
-                const fileKTP = document.getElementById('fileKTP').files[0];
-
-                const maxSize = 3 * 1024 * 1024;
-                if ((fileKK && fileKK.size > maxSize) || (fileKTP && fileKTP.size > maxSize)) {
-                    alert("Ukuran salah satu foto terlalu besar! Maksimal 3MB per file foto.");
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                    submitBtn.innerHTML = originalText;
-                    return;
-                }
-
                 if (fileKK) {
-                    const base64KK = await getBase64(fileKK);
-                    formData.append('kkBase64', base64KK.split(',')[1]); 
-                    formData.append('kkMimeType', fileKK.type);
-                    formData.append('kkFileName', fileKK.name);
+                    const b64 = await getBase64(fileKK);
+                    formData.append('kkBase64', b64.split(',')[1]); formData.append('kkMimeType', fileKK.type);
                 }
-
+                const fileKTP = document.getElementById('fileKTP').files[0];
                 if (fileKTP) {
-                    const base64KTP = await getBase64(fileKTP);
-                    formData.append('ktpBase64', base64KTP.split(',')[1]);
-                    formData.append('ktpMimeType', fileKTP.type);
-                    formData.append('ktpFileName', fileKTP.name);
+                    const b64 = await getBase64(fileKTP);
+                    formData.append('ktpBase64', b64.split(',')[1]); formData.append('ktpMimeType', fileKTP.type);
                 }
 
-                formData.delete('fileKK');
-                formData.delete('fileKTP');
-
-                const urlEncodedData = new URLSearchParams();
-                for (const pair of formData.entries()) {
-                    urlEncodedData.append(pair[0], pair[1]);
-                }
-
-                await fetch(scriptURL, { 
-                    method: 'POST', 
-                    body: urlEncodedData,
-                    mode: 'no-cors' 
-                });
-
+                await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
                 document.getElementById('successModal').classList.remove('hidden');
-
-            } catch (error) {
-                console.error('Error!', error.message);
-                alert("Kendala koneksi, pastikan internet lancar atau hubungi HR.");
+            } catch (err) {
+                alert("Gagal. Cek internet Anda.");
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                submitBtn.innerHTML = originalText;
+                btn.disabled = false; btn.innerHTML = oriText; btn.classList.remove('opacity-70');
             }
         });
 
         function closeModal() {
             document.getElementById('successModal').classList.add('hidden');
-            form.reset();
+            window.location.reload(); // Refresh total agar bersih
+        }
+
+        async function checkStatus() {
+            const inputId = document.getElementById('trackIdNumber').value;
+            const btn = document.getElementById('btnTrack');
+            const resBox = document.getElementById('trackResult');
+            const notFoundBox = document.getElementById('trackNotFound');
             
-            document.getElementById('kkFileNameContainer').classList.add('hidden');
-            document.getElementById('ktpFileNameContainer').classList.add('hidden');
-            document.querySelectorAll('label[for^="file"]').forEach(lbl => {
-                lbl.classList.remove('border-primary', 'bg-blue-50');
-            });
+            if (inputId.length !== 6) { alert("Masukkan 6 Digit Nomor ID!"); return; }
 
-            const container = document.getElementById('familyMembersContainer');
-            const cards = container.querySelectorAll('.family-member-card');
-            for(let i = 1; i < cards.length; i++) {
-                cards[i].remove();
+            // Animasi loading tombol
+            btn.innerHTML = `<svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>`;
+            btn.disabled = true;
+            resBox.classList.add('hidden'); notFoundBox.classList.add('hidden');
+
+            try {
+                // Fetch data GET dari Google Apps Script
+                const response = await fetch(`${scriptURL}?action=checkStatus&idNumber=${inputId}`);
+                const data = await response.json();
+
+                if (data.result === 'success') {
+                    document.getElementById('resName').textContent = data.employeeName;
+                    document.getElementById('resDept').textContent = data.department;
+                    
+                    const listContainer = document.getElementById('resList');
+                    listContainer.innerHTML = ''; // bersihkan list lama
+
+                    data.data.forEach(item => {
+                        // Tentukan warna badge berdasarkan text status
+                        let colorClass = "bg-slate-100 text-slate-600"; // default
+                        let statusText = item.status.toLowerCase();
+                        if (statusText.includes("tunggu")) colorClass = "bg-orange-100 text-orange-700";
+                        if (statusText.includes("proses")) colorClass = "bg-blue-100 text-blue-700";
+                        if (statusText.includes("selesai")) colorClass = "bg-emerald-100 text-emerald-700";
+                        if (statusText.includes("tolak")) colorClass = "bg-red-100 text-red-700";
+
+                        const li = document.createElement('li');
+                        li.className = "p-4 flex items-center justify-between gap-3";
+                        li.innerHTML = `
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 mb-0.5">${item.tanggal} &bull; ${item.statusKeluarga}</p>
+                                <p class="text-sm font-bold text-slate-800">${item.namaKeluarga}</p>
+                            </div>
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold ${colorClass}">
+                                ${item.status}
+                            </span>
+                        `;
+                        listContainer.appendChild(li);
+                    });
+                    resBox.classList.remove('hidden');
+                } else {
+                    notFoundBox.classList.remove('hidden');
+                }
+            } catch (error) {
+                alert("Gagal menghubungi server. Pastikan URL Script benar dan internet lancar.");
+            } finally {
+                btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>`;
+                btn.disabled = false;
             }
-            memberCount = 1;
-            updateButtons();
-            container.querySelector('.remove-btn').classList.add('hidden');
-            updateRelationDropdowns();
-
-            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
