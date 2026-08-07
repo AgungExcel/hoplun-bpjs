@@ -14,7 +14,7 @@
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#0284c7', // Professional Blue
+                        primary: '#0284c7',
                         primaryDark: '#0369a1',
                         secondary: '#10b981', 
                     }
@@ -28,26 +28,19 @@
             background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
             background-size: 24px 24px;
         }
-        
-        /* Custom Scrollbar for better UI */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         
         .glass-card {
             background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);
+            box-shadow: 0 4px 25px -5px rgba(0,0,0,0.05);
         }
-
-        /* Input Styling */
-        input, select {
-            transition: all 0.2s ease-in-out;
-        }
+        input, select { transition: all 0.2s ease-in-out; }
         input:focus, select:focus {
             transform: translateY(-1px);
             box-shadow: 0 4px 12px -4px rgba(2, 132, 199, 0.15);
         }
-
         .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
@@ -57,39 +50,32 @@
 </head>
 <body class="min-h-screen py-4 px-3 sm:py-8 sm:px-6 font-sans text-slate-800 flex flex-col items-center">
 
-    <!-- Background Decoration -->
     <div class="fixed top-0 left-0 w-full h-72 bg-gradient-to-b from-primary/5 to-transparent -z-10"></div>
 
     <div class="w-full max-w-3xl mx-auto glass-card rounded-2xl overflow-hidden animate-fade-in border border-slate-100">
         
-        <!-- Header Section -->
         <div class="bg-white border-b border-slate-100 px-5 py-4 sm:px-8 sm:py-5 relative overflow-hidden flex flex-row items-center justify-between gap-4">
             <div class="absolute top-0 left-0 w-1.5 h-full bg-primary"></div>
             
-            <!-- Logo Perusahaan -->
             <div class="flex-shrink-0">
                 <img src="hoplun 2.jpg" alt="Logo Hop Lun" class="h-10 sm:h-12 w-auto object-contain rounded drop-shadow-sm" onerror="this.src='https://placehold.co/120x40/fce7f3/db2777?text=HOP+LUN'">
             </div>
             
-            <!-- Title -->
             <div class="text-center flex-grow">
                 <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 leading-tight">Pendaftaran BPJS Kesehatan</h1>
                 <p class="text-[10px] sm:text-xs font-bold text-primary mt-0.5 uppercase tracking-widest">Keluarga (Suami/Istri/Anak)</p>
             </div>
             
-            <!-- Logo BPJS -->
             <div class="flex-shrink-0">
                  <img src="BPJS Kesehatan Logo.png" alt="Logo BPJS Kesehatan" class="h-8 sm:h-10 w-auto object-contain drop-shadow-sm" onerror="this.src='https://placehold.co/120x40/16a34a/ffffff?text=BPJS'">
             </div>
         </div>
 
-        <!-- Form Section -->
         <div class="px-5 py-6 sm:p-8 bg-white/40">
-            <!-- Alert Info -->
             <div class="mb-6 bg-blue-50/50 border border-blue-100 rounded-lg p-3 flex gap-3 text-xs sm:text-sm text-blue-800">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 <div class="leading-relaxed">
-                    Semua kolom bertanda bintang (<span class="text-red-500">*</span>) wajib diisi. Pastikan NIK sesuai dengan KTP/KK.
+                    Semua kolom bertanda bintang (<span class="text-red-500">*</span>) wajib diisi. NIK wajib 16 digit & ID 6 digit.
                 </div>
             </div>
 
@@ -128,8 +114,7 @@
                         
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Departemen <span class="text-red-500">*</span></label>
-                            <select name="department" required
-                                class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+                            <select name="department" required class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer">
                                 <option value="" disabled selected>-- Pilih --</option>
                                 <option value="CUTTING">CUTTING</option>
                                 <option value="FINANCE">FINANCE</option>
@@ -176,7 +161,6 @@
                     </div>
 
                     <div id="familyMembersContainer" class="space-y-4">
-                        <!-- Card Anggota (Template) -->
                         <div class="family-member-card bg-slate-50/50 border border-slate-200 rounded-xl p-3 sm:p-4 relative">
                             <div class="absolute top-3 right-3 hidden remove-btn">
                                 <button type="button" onclick="removeFamilyMember(this)" class="text-slate-400 hover:text-red-500 bg-white rounded-md p-1 shadow-sm transition-colors border border-slate-100">
@@ -229,7 +213,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Upload KK -->
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Foto KK <span class="text-red-500">*</span></label>
                             <label for="fileKK" class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-200 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50 transition-colors group">
@@ -245,7 +228,6 @@
                             </div>
                         </div>
 
-                        <!-- Upload KTP -->
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Foto KTP <span class="text-red-500">*</span></label>
                             <label for="fileKTP" class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-200 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-blue-50 transition-colors group">
@@ -273,7 +255,6 @@
         </div>
     </div>
     
-    <!-- Footer -->
     <div class="mt-6 text-center text-xs text-slate-400 font-medium pb-6">
         &copy; 2026 Hop Lun. People and Culture Department.
     </div>
@@ -305,16 +286,13 @@
     </div>
 
     <script>
-        const MAX_FAMILY_MEMBERS = 4; // Suami/istri + max 3 anak
+        const MAX_FAMILY_MEMBERS = 4;
         let memberCount = 1;
 
-        // Logika Dropdown Cerdas - DIPERBAIKI
         function updateRelationDropdowns() {
-            // Ambil semua elemen select di halaman
             const selects = Array.from(document.querySelectorAll('select[name="familyRelation[]"]'));
             
             selects.forEach((currentSelect, currentIndex) => {
-                // Cari tahu value apa saja yang sudah dipilih di kotak dropdown LAIN (selain kotak yang ini)
                 const otherValues = selects
                     .filter((_, idx) => idx !== currentIndex)
                     .map(s => s.value)
@@ -322,15 +300,12 @@
                 
                 const otherHasPartner = otherValues.includes('Suami') || otherValues.includes('Istri');
 
-                // Update opsi di dalam dropdown ini berdasarkan pilihan dropdown LAIN
                 Array.from(currentSelect.options).forEach(opt => {
                     if (opt.value === "") return;
                     
                     if (opt.value === 'Suami' || opt.value === 'Istri') {
-                        // Kunci Suami/Istri JIKA kotak lain sudah memilihnya
                         opt.disabled = otherHasPartner;
                     } else {
-                        // Kunci Anak 1,2,3 JIKA kotak lain sudah memilihnya
                         opt.disabled = otherValues.includes(opt.value);
                     }
                 });
@@ -418,7 +393,6 @@
             });
         };
 
-        // --- SUBMIT GOOGLE SCRIPT ---
         const form = document.getElementById('bpjsForm');
         
         form.addEventListener('submit', async function(e) {
@@ -429,18 +403,16 @@
             
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-            submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Mengirim Data & Foto...`;
+            submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Mengirim Data...`;
 
-            // URL Google Apps Script Anda (Tetap memakai yang sama)
+            // URL BARU ANDA DITAMBAHKAN DISINI
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzAHAFgnfeyU4TORE0SzwDIv0035HBNorCK5hve9RdzdOf8sYrwNW19zCnI5X6plGVUYQ/exec';
             const formData = new FormData(form);
 
             try {
-                // Ambil file dari input form
                 const fileKK = document.getElementById('fileKK').files[0];
                 const fileKTP = document.getElementById('fileKTP').files[0];
 
-                // Batas file upload 3MB per foto agar Google Apps Script tidak Crash/Error (Batas dari Google 50MB per Request)
                 const maxSize = 3 * 1024 * 1024;
                 if ((fileKK && fileKK.size > maxSize) || (fileKTP && fileKTP.size > maxSize)) {
                     alert("Ukuran salah satu foto terlalu besar! Maksimal 3MB per file foto.");
@@ -450,15 +422,13 @@
                     return;
                 }
 
-                // Convert File Foto KK -> Teks Base64 (Lolos filter Google Form)
                 if (fileKK) {
                     const base64KK = await getBase64(fileKK);
-                    formData.append('kkBase64', base64KK.split(',')[1]); // Hilangkan header base64 (data:image/jpeg;base64,)
+                    formData.append('kkBase64', base64KK.split(',')[1]); 
                     formData.append('kkMimeType', fileKK.type);
                     formData.append('kkFileName', fileKK.name);
                 }
 
-                // Convert File Foto KTP -> Teks Base64 (Lolos filter Google Form)
                 if (fileKTP) {
                     const base64KTP = await getBase64(fileKTP);
                     formData.append('ktpBase64', base64KTP.split(',')[1]);
@@ -466,33 +436,26 @@
                     formData.append('ktpFileName', fileKTP.name);
                 }
 
-                // WAJIB hapus file aslinya dari form karena file fisik tidak di-support oleh Web App Exec Google Script
                 formData.delete('fileKK');
                 formData.delete('fileKTP');
 
-                // Ubah format data (termasuk foto) agar lebih stabil dibaca oleh Google Apps Script
                 const urlEncodedData = new URLSearchParams();
                 for (const pair of formData.entries()) {
                     urlEncodedData.append(pair[0], pair[1]);
                 }
 
-                // Eksekusi pengiriman via background
                 await fetch(scriptURL, { 
                     method: 'POST', 
                     body: urlEncodedData,
-                    mode: 'no-cors' // BARIS INI WAJIB ADA: Mencegah error blokir CORS dari Browser
+                    mode: 'no-cors' 
                 });
 
-                // Menampilkan Modal sukses jika request berhasil terkirim
                 document.getElementById('successModal').classList.remove('hidden');
 
             } catch (error) {
                 console.error('Error!', error.message);
-                // Fallback: Tampilkan sukses atau beri peringatan
-                alert("Proses terkendala koneksi, namun data mungkin telah terkirim. Silakan cek dengan admin HR.");
-                document.getElementById('successModal').classList.remove('hidden');
+                alert("Kendala koneksi, pastikan internet lancar atau hubungi HR.");
             } finally {
-                // Kembalikan tombol ke kondisi semula
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                 submitBtn.innerHTML = originalText;
@@ -503,14 +466,12 @@
             document.getElementById('successModal').classList.add('hidden');
             form.reset();
             
-            // Reset UI File
             document.getElementById('kkFileNameContainer').classList.add('hidden');
             document.getElementById('ktpFileNameContainer').classList.add('hidden');
             document.querySelectorAll('label[for^="file"]').forEach(lbl => {
                 lbl.classList.remove('border-primary', 'bg-blue-50');
             });
 
-            // Reset Member Cards
             const container = document.getElementById('familyMembersContainer');
             const cards = container.querySelectorAll('.family-member-card');
             for(let i = 1; i < cards.length; i++) {
