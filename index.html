@@ -51,8 +51,8 @@
                 
                 <!-- Teks Judul (Akan di tengah pada Desktop, dan di bawah logo pada Mobile) -->
                 <div class="text-center w-full sm:flex-grow mt-1 sm:mt-0">
-                    <h1 class="text-[15px] sm:text-xl font-bold tracking-tight text-slate-900 leading-tight">Formulir Pendaftaran</h1>
-                    <p class="text-[9px] sm:text-xs font-bold text-primary mt-1 uppercase tracking-widest">BPJS Kesehatan Anggota Keluarga (Suami/Istri/Anak)</p>
+                    <h1 class="text-[15px] sm:text-xl font-bold tracking-tight text-slate-900 leading-tight">Pendaftaran BPJS Kesehatan</h1>
+                    <p class="text-[9px] sm:text-xs font-bold text-primary mt-1 uppercase tracking-widest">Anggota Keluarga (Suami/Istri/Anak)</p>
                 </div>
                 
                 <!-- Layout khusus Desktop: Logo Kanan -->
@@ -84,8 +84,8 @@
                         <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2 mb-4 flex items-center gap-2"><span class="bg-primary text-white w-5 h-5 flex items-center justify-center rounded-full">1</span> Data Utama</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nomor ID ( Tanpa SR/SM ) <span class="text-red-500">*</span></label>
-                                <input type="text" name="idNumber" required placeholder="6 Angka" minlength="6" maxlength="6" pattern="\d{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nomor ID ( Wajib SR/SM ) <span class="text-red-500">*</span></label>
+                                <input type="text" name="idNumber" required placeholder="Contoh: SR123456" minlength="8" maxlength="8" pattern="^(SR|SM)\d{6}$" title="Harus diawali SR atau SM diikuti 6 angka" oninput="let v = this.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); if(v.length > 0 && v[0] !== 'S') v = ''; if(v.length > 1 && v[1] !== 'R' && v[1] !== 'M') v = 'S'; if(v.length > 2) v = v.substring(0, 2) + v.substring(2).replace(/[^0-9]/g, ''); this.value = v.substring(0, 8);" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
                             </div>
                             <div>
                                 <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Nama Karyawan <span class="text-red-500">*</span></label>
@@ -104,7 +104,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">No. HP Aktif <span class="text-red-500">*</span></label>
-                                <input type="tel" name="phoneNumber" required placeholder="081234567890" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
+                                <input type="text" name="phoneNumber" required placeholder="Contoh: 081234567890" maxlength="13" oninput="let v = this.value; if(v.startsWith('+62')) v = '0' + v.slice(3); else if(v.startsWith('62')) v = '0' + v.slice(2); v = v.replace(/[^0-9]/g, ''); if(v.length > 0 && v[0] !== '0') v = '0' + v; this.value = v.substring(0, 13);" class="block w-full rounded-lg border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary transition-all">
                             </div>
                         </div>
                     </div>
@@ -164,11 +164,11 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
                     <h2 class="text-base font-bold text-slate-900">Pantau Proses Pendaftaran</h2>
-                    <p class="text-xs text-slate-500 mt-1">Masukkan Nomor ID Karyawan Tanpa SR/SM Anda untuk mengecek status pendaftaran BPJS.</p>
+                    <p class="text-xs text-slate-500 mt-1">Masukkan Nomor ID Karyawan Anda (Pakai SR/SM) untuk mengecek status pendaftaran BPJS.</p>
                 </div>
 
                 <div class="relative max-w-sm mx-auto mb-8">
-                    <input type="text" id="trackIdNumber" placeholder="Contoh: 123456" minlength="6" maxlength="6" pattern="\d{6}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);" class="block w-full pl-4 pr-12 py-3 rounded-xl border-2 border-slate-200 bg-white text-sm outline-none focus:border-primary transition-all shadow-sm">
+                    <input type="text" id="trackIdNumber" placeholder="Contoh: SR123456" minlength="8" maxlength="8" pattern="^(SR|SM)\d{6}$" oninput="let v = this.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); if(v.length > 0 && v[0] !== 'S') v = ''; if(v.length > 1 && v[1] !== 'R' && v[1] !== 'M') v = 'S'; if(v.length > 2) v = v.substring(0, 2) + v.substring(2).replace(/[^0-9]/g, ''); this.value = v.substring(0, 8);" class="block w-full pl-4 pr-12 py-3 rounded-xl border-2 border-slate-200 bg-white text-sm outline-none focus:border-primary transition-all shadow-sm">
                     <button onclick="checkStatus()" id="btnTrack" class="absolute right-2 top-2 bottom-2 aspect-square flex items-center justify-center bg-primary text-white rounded-lg hover:bg-primaryDark transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </button>
@@ -327,8 +327,13 @@
             const resBox = document.getElementById('trackResult');
             const notFoundBox = document.getElementById('trackNotFound');
             
-            if (inputId.length !== 6) { alert("Masukkan 6 Digit Nomor ID!"); return; }
+            // Validasi Nomor ID sebelum melakukan pencarian
+            if (inputId.length !== 8 || !/^(SR|SM)\d{6}$/.test(inputId)) { 
+                alert("Masukkan Nomor ID yang benar! Harus diawali SR/SM diikuti 6 angka (Contoh: SR123456)"); 
+                return; 
+            }
 
+            // Animasi loading tombol
             btn.innerHTML = `<svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>`;
             btn.disabled = true;
             resBox.classList.add('hidden'); notFoundBox.classList.add('hidden');
