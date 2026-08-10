@@ -124,7 +124,7 @@
                                     <div class="sm:col-span-2">
                                         <select name="familyRelation[]" required onchange="updateRelationDropdowns()" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary"><option value="" disabled selected>Status Hubungan</option><option value="Suami">Suami</option><option value="Istri">Istri</option><option value="Anak Ke-1">Anak Ke-1</option><option value="Anak Ke-2">Anak Ke-2</option><option value="Anak Ke-3">Anak Ke-3</option></select>
                                     </div>
-                                    <div><input type="text" name="familyName[]" required placeholder="NAMA (Huruf Besar)" oninput="this.value = this.value.toUpperCase();" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary uppercase"></div>
+                                    <div><input type="text" name="familyName[]" required placeholder="Nama Lengkap" oninput="this.value = this.value.toUpperCase();" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary uppercase"></div>
                                     <div><input type="text" name="familyNik[]" required placeholder="NIK 16 Angka" minlength="16" maxlength="16" pattern="\d{16}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16);" class="block w-full rounded border-slate-200 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-primary focus:border-primary"></div>
                                 </div>
                             </div>
