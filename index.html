@@ -83,6 +83,90 @@
             margin-top: 5px !important;
         }
 
+    
+        /* Premium, clean status dashboard */
+        .status-icon-wrap {
+            display: none !important;
+        }
+
+        .status-item {
+            margin-bottom: 14px !important;
+            padding: 0 !important;
+        }
+
+        .status-row {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 12px !important;
+            min-height: 30px !important;
+            width: 100% !important;
+        }
+
+        .status-row .status-name {
+            font-size: 14px !important;
+            line-height: 1.35 !important;
+            font-weight: 600 !important;
+            color: #334155 !important;
+        }
+
+        .status-row .status-value {
+            font-size: 15px !important;
+            line-height: 1.35 !important;
+            font-weight: 750 !important;
+            color: #1e293b !important;
+            white-space: nowrap !important;
+        }
+
+        .status-bar-track {
+            height: 7px !important;
+            border-radius: 999px !important;
+            background: #e8edf3 !important;
+            overflow: hidden !important;
+            margin-top: 6px !important;
+        }
+
+        .status-bar-fill {
+            height: 100% !important;
+            border-radius: 999px !important;
+            transition: width .45s ease !important;
+        }
+
+        /* Total data card */
+        #totalDataCount {
+            font-size: 34px !important;
+            line-height: 1 !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.03em !important;
+        }
+
+        .total-data-label {
+            font-size: 10px !important;
+            font-weight: 700 !important;
+            letter-spacing: .08em !important;
+            text-transform: uppercase !important;
+        }
+
+        .total-data-subtitle {
+            font-size: 11px !important;
+            color: #94a3b8 !important;
+        }
+
+        /* Cleaner dashboard container */
+        #statusSummary {
+            border-radius: 18px !important;
+        }
+
+        #statusChart {
+            padding-top: 4px !important;
+        }
+
+        #statusChartNote {
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            color: #94a3b8 !important;
+        }
+
     </style>
 </head>
 <body class="min-h-screen py-4 px-3 sm:py-8 sm:px-6 font-sans text-slate-800 flex flex-col items-center">
@@ -250,7 +334,7 @@
                                     <p id="statusTotalData" class="status-total-number mt-1">-</p>
                                 </div>
                             </div>
-                            <span class="text-[10px] font-semibold text-slate-400 whitespace-nowrap">Seluruh pendaftaran</span>
+                            <span class="text-[10px] font-semibold text-slate-400 whitespace-nowrap">Seluruh data yang sudah masuk</span>
                         </div>
 
                         <div class="flex items-center justify-between mb-3">
@@ -294,9 +378,7 @@
     <div id="successModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
         <div class="bg-white rounded-2xl p-6 text-center shadow-xl max-w-xs w-full relative z-10 animate-fade-in">
-            <div class="status-icon-wrap bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-            </div>
+            
             <h3 class="text-base font-bold text-slate-900 mb-1">Berhasil Terkirim!</h3>
             <p class="text-xs text-slate-500 mb-4">Data pendaftaran telah masuk ke sistem. Silakan cek status secara berkala atau bisa dicek diAplikasi JKN Mobile</p>
             <button onclick="closeModal()" class="w-full bg-slate-800 text-white rounded-lg py-2 text-sm font-bold">Selesai</button>
