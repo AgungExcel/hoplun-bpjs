@@ -185,6 +185,24 @@
 
                 <div id="statusSummary" class="status-summary p-4 mb-5 rounded-xl border border-slate-100 shadow-sm">
                     <div class="status-card rounded-xl p-4">
+                        <div class="status-total-banner">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div class="status-total-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 3v18h18"></path>
+                                        <path d="M7 16v-5"></path>
+                                        <path d="M12 16V7"></path>
+                                        <path d="M17 16v-8"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase tracking-wider font-bold text-slate-500">TOTAL DATA SUDAH MASUK</p>
+                                    <p id="statusTotalData" class="status-total-number mt-1">-</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-semibold text-slate-400 whitespace-nowrap">Seluruh pendaftaran</span>
+                        </div>
+
                         <div class="flex items-center justify-between mb-3">
                             <p class="text-[10px] uppercase tracking-wider font-bold text-slate-500">DIAGRAM STATUS</p>
                             <p id="statusChartNote" class="text-[10px] text-slate-400">Seluruh data</p>
@@ -394,11 +412,42 @@
 
         function getStatusStyle(status) {
             const s=String(status||'').toLowerCase();
-            if(s.includes('tunggu')) return {card:'bg-orange-50 border-orange-100 text-orange-700',dot:'#f97316',bar:'#f97316'};
-            if(s.includes('proses')) return {card:'bg-blue-50 border-blue-100 text-blue-700',dot:'#3b82f6',bar:'#3b82f6'};
-            if(s.includes('selesai')||s.includes('berhasil')) return {card:'bg-emerald-50 border-emerald-100 text-emerald-700',dot:'#10b981',bar:'#10b981'};
-            if(s.includes('tolak')||s.includes('gagal')) return {card:'bg-red-50 border-red-100 text-red-700',dot:'#ef4444',bar:'#ef4444'};
-            return {card:'bg-slate-50 border-slate-200 text-slate-700',dot:'#64748b',bar:'#64748b'};
+
+            if(s.includes('selesai')||s.includes('berhasil')) return {
+                card:'bg-emerald-50 border-emerald-100 text-emerald-700',
+                dot:'#10b981', bar:'#10b981', iconBg:'#d1fae5', icon:'#047857',
+                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>'
+            };
+
+            if(s.includes('tunggu')) return {
+                card:'bg-orange-50 border-orange-100 text-orange-700',
+                dot:'#f97316', bar:'#f97316', iconBg:'#ffedd5', icon:'#c2410c',
+                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>'
+            };
+
+            if(s.includes('proses')) return {
+                card:'bg-blue-50 border-blue-100 text-blue-700',
+                dot:'#3b82f6', bar:'#3b82f6', iconBg:'#dbeafe', icon:'#1d4ed8',
+                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 7v5l3 2"></path><path d="M17 3h4v4"></path></svg>'
+            };
+
+            if(s.includes('tolak')||s.includes('gagal')) return {
+                card:'bg-red-50 border-red-100 text-red-700',
+                dot:'#ef4444', bar:'#ef4444', iconBg:'#fee2e2', icon:'#b91c1c',
+                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"></circle><path d="M8 8l8 8M16 8l-8 8"></path></svg>'
+            };
+
+            if(s.includes('aktif')) return {
+                card:'bg-violet-50 border-violet-100 text-violet-700',
+                dot:'#8b5cf6', bar:'#8b5cf6', iconBg:'#ede9fe', icon:'#6d28d9',
+                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4 8 4 8-4Z"></path><path d="M4 7v6l8 4 8-4V7"></path><path d="M8 18l4 2 4-2"></path></svg>'
+            };
+
+            return {
+                card:'bg-slate-50 border-slate-200 text-slate-700',
+                dot:'#64748b', bar:'#64748b', iconBg:'#e2e8f0', icon:'#475569',
+                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M8 9h8M8 13h8M8 17h5"></path></svg>'
+            };
         }
 
         async function loadAllStatusSummary() {
@@ -438,6 +487,8 @@
 
                     const counts = data.statusCounts || {};
                     const totalData = Number(data.total || 0);
+                    const totalEl = document.getElementById('statusTotalData');
+                    if (totalEl) totalEl.textContent = totalData.toLocaleString('id-ID');
                     const entries = Object.entries(counts).sort((a,b) => Number(b[1]) - Number(a[1]));
 
                     chart.innerHTML = '';
@@ -451,8 +502,10 @@
                             const row = document.createElement('div');
                             row.innerHTML = `
                                 <div class="flex items-center justify-between gap-3 mb-1">
-                                    <div class="flex items-center gap-2 min-w-0">
-                                        <span class="status-dot" style="background:${st.dot}"></span>
+                                    <div class="status-label-wrap">
+                                        <span class="status-item-icon" style="background:${st.iconBg};color:${st.icon}">
+                                            ${st.icon}
+                                        </span>
                                         <span class="text-xs font-semibold text-slate-700 truncate">${escapeHtml(status)}</span>
                                     </div>
                                     <span class="text-xs font-bold text-slate-700 shrink-0">${count} (${Math.round(pct)}%)</span>
