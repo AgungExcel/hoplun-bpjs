@@ -33,140 +33,6 @@
         .status-dot { width:9px; height:9px; border-radius:999px; display:inline-block; flex:0 0 auto; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-    
-        /* Compact professional status icons */
-        .status-icon-wrap {
-            width: 26px !important;
-            height: 26px !important;
-            min-width: 26px !important;
-            max-width: 26px !important;
-            border-radius: 8px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            flex: 0 0 26px !important;
-            line-height: 1 !important;
-        }
-        .status-icon-wrap svg,
-        .status-icon-wrap svg * {
-            width: 15px !important;
-            height: 15px !important;
-            max-width: 15px !important;
-            max-height: 15px !important;
-            min-width: 15px !important;
-            min-height: 15px !important;
-        }
-        .status-icon-wrap svg {
-            display: block !important;
-            overflow: visible !important;
-        }
-        .status-row {
-            display: flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-            min-height: 30px !important;
-        }
-        .status-row .status-name {
-            font-size: 13px !important;
-            line-height: 1.2 !important;
-            font-weight: 600 !important;
-        }
-        .status-row .status-value {
-            font-size: 13px !important;
-            line-height: 1.2 !important;
-            font-weight: 700 !important;
-        }
-        .status-item {
-            margin-bottom: 10px !important;
-        }
-        .status-item .status-bar-track {
-            margin-top: 5px !important;
-        }
-
-    
-        /* Premium, clean status dashboard */
-        .status-icon-wrap {
-            display: none !important;
-        }
-
-        .status-item {
-            margin-bottom: 14px !important;
-            padding: 0 !important;
-        }
-
-        .status-row {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 12px !important;
-            min-height: 30px !important;
-            width: 100% !important;
-        }
-
-        .status-row .status-name {
-            font-size: 14px !important;
-            line-height: 1.35 !important;
-            font-weight: 600 !important;
-            color: #334155 !important;
-        }
-
-        .status-row .status-value {
-            font-size: 15px !important;
-            line-height: 1.35 !important;
-            font-weight: 750 !important;
-            color: #1e293b !important;
-            white-space: nowrap !important;
-        }
-
-        .status-bar-track {
-            height: 7px !important;
-            border-radius: 999px !important;
-            background: #e8edf3 !important;
-            overflow: hidden !important;
-            margin-top: 6px !important;
-        }
-
-        .status-bar-fill {
-            height: 100% !important;
-            border-radius: 999px !important;
-            transition: width .45s ease !important;
-        }
-
-        /* Total data card */
-        #totalDataCount {
-            font-size: 34px !important;
-            line-height: 1 !important;
-            font-weight: 800 !important;
-            letter-spacing: -0.03em !important;
-        }
-
-        .total-data-label {
-            font-size: 10px !important;
-            font-weight: 700 !important;
-            letter-spacing: .08em !important;
-            text-transform: uppercase !important;
-        }
-
-        .total-data-subtitle {
-            font-size: 11px !important;
-            color: #94a3b8 !important;
-        }
-
-        /* Cleaner dashboard container */
-        #statusSummary {
-            border-radius: 18px !important;
-        }
-
-        #statusChart {
-            padding-top: 4px !important;
-        }
-
-        #statusChartNote {
-            font-size: 11px !important;
-            font-weight: 600 !important;
-            color: #94a3b8 !important;
-        }
-
     </style>
 </head>
 <body class="min-h-screen py-4 px-3 sm:py-8 sm:px-6 font-sans text-slate-800 flex flex-col items-center">
@@ -319,24 +185,6 @@
 
                 <div id="statusSummary" class="status-summary p-4 mb-5 rounded-xl border border-slate-100 shadow-sm">
                     <div class="status-card rounded-xl p-4">
-                        <div class="status-total-banner">
-                            <div class="flex items-center gap-3 min-w-0">
-                                <div class="status-total-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 3v18h18"></path>
-                                        <path d="M7 16v-5"></path>
-                                        <path d="M12 16V7"></path>
-                                        <path d="M17 16v-8"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] uppercase tracking-wider font-bold text-slate-500">TOTAL DATA SUDAH MASUK</p>
-                                    <p id="statusTotalData" class="status-total-number mt-1">-</p>
-                                </div>
-                            </div>
-                            <span class="text-[10px] font-semibold text-slate-400 whitespace-nowrap">Seluruh data yang sudah masuk</span>
-                        </div>
-
                         <div class="flex items-center justify-between mb-3">
                             <p class="text-[10px] uppercase tracking-wider font-bold text-slate-500">DIAGRAM STATUS</p>
                             <p id="statusChartNote" class="text-[10px] text-slate-400">Seluruh data</p>
@@ -361,7 +209,7 @@
                 
                 <!-- Pesan Tidak Ditemukan -->
                 <div id="trackNotFound" class="hidden text-center py-8">
-                    <svg class="status-icon-wrap mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-10 h-10 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <p class="text-sm font-bold text-slate-700">Data tidak ditemukan</p>
                     <p class="text-xs text-slate-500 mt-1">Pastikan ID benar atau Anda belum mendaftar.</p>
                 </div>
@@ -378,7 +226,9 @@
     <div id="successModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
         <div class="bg-white rounded-2xl p-6 text-center shadow-xl max-w-xs w-full relative z-10 animate-fade-in">
-            
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
             <h3 class="text-base font-bold text-slate-900 mb-1">Berhasil Terkirim!</h3>
             <p class="text-xs text-slate-500 mb-4">Data pendaftaran telah masuk ke sistem. Silakan cek status secara berkala atau bisa dicek diAplikasi JKN Mobile</p>
             <button onclick="closeModal()" class="w-full bg-slate-800 text-white rounded-lg py-2 text-sm font-bold">Selesai</button>
@@ -544,42 +394,11 @@
 
         function getStatusStyle(status) {
             const s=String(status||'').toLowerCase();
-
-            if(s.includes('selesai')||s.includes('berhasil')) return {
-                card:'bg-emerald-50 border-emerald-100 text-emerald-700',
-                dot:'#10b981', bar:'#10b981', iconBg:'#d1fae5', icon:'#047857',
-                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>'
-            };
-
-            if(s.includes('tunggu')) return {
-                card:'bg-orange-50 border-orange-100 text-orange-700',
-                dot:'#f97316', bar:'#f97316', iconBg:'#ffedd5', icon:'#c2410c',
-                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>'
-            };
-
-            if(s.includes('proses')) return {
-                card:'bg-blue-50 border-blue-100 text-blue-700',
-                dot:'#3b82f6', bar:'#3b82f6', iconBg:'#dbeafe', icon:'#1d4ed8',
-                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 7v5l3 2"></path><path d="M17 3h4v4"></path></svg>'
-            };
-
-            if(s.includes('tolak')||s.includes('gagal')) return {
-                card:'bg-red-50 border-red-100 text-red-700',
-                dot:'#ef4444', bar:'#ef4444', iconBg:'#fee2e2', icon:'#b91c1c',
-                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"></circle><path d="M8 8l8 8M16 8l-8 8"></path></svg>'
-            };
-
-            if(s.includes('aktif')) return {
-                card:'bg-violet-50 border-violet-100 text-violet-700',
-                dot:'#8b5cf6', bar:'#8b5cf6', iconBg:'#ede9fe', icon:'#6d28d9',
-                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4 8 4 8-4Z"></path><path d="M4 7v6l8 4 8-4V7"></path><path d="M8 18l4 2 4-2"></path></svg>'
-            };
-
-            return {
-                card:'bg-slate-50 border-slate-200 text-slate-700',
-                dot:'#64748b', bar:'#64748b', iconBg:'#e2e8f0', icon:'#475569',
-                icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"></path><path d="M8 9h8M8 13h8M8 17h5"></path></svg>'
-            };
+            if(s.includes('tunggu')) return {card:'bg-orange-50 border-orange-100 text-orange-700',dot:'#f97316',bar:'#f97316'};
+            if(s.includes('proses')) return {card:'bg-blue-50 border-blue-100 text-blue-700',dot:'#3b82f6',bar:'#3b82f6'};
+            if(s.includes('selesai')||s.includes('berhasil')) return {card:'bg-emerald-50 border-emerald-100 text-emerald-700',dot:'#10b981',bar:'#10b981'};
+            if(s.includes('tolak')||s.includes('gagal')) return {card:'bg-red-50 border-red-100 text-red-700',dot:'#ef4444',bar:'#ef4444'};
+            return {card:'bg-slate-50 border-slate-200 text-slate-700',dot:'#64748b',bar:'#64748b'};
         }
 
         async function loadAllStatusSummary() {
@@ -619,8 +438,6 @@
 
                     const counts = data.statusCounts || {};
                     const totalData = Number(data.total || 0);
-                    const totalEl = document.getElementById('statusTotalData');
-                    if (totalEl) totalEl.textContent = totalData.toLocaleString('id-ID');
                     const entries = Object.entries(counts).sort((a,b) => Number(b[1]) - Number(a[1]));
 
                     chart.innerHTML = '';
@@ -634,10 +451,8 @@
                             const row = document.createElement('div');
                             row.innerHTML = `
                                 <div class="flex items-center justify-between gap-3 mb-1">
-                                    <div class="status-label-wrap">
-                                        <span class="status-item-icon" style="background:${st.iconBg};color:${st.icon}">
-                                            ${st.icon}
-                                        </span>
+                                    <div class="flex items-center gap-2 min-w-0">
+                                        <span class="status-dot" style="background:${st.dot}"></span>
                                         <span class="text-xs font-semibold text-slate-700 truncate">${escapeHtml(status)}</span>
                                     </div>
                                     <span class="text-xs font-bold text-slate-700 shrink-0">${count} (${Math.round(pct)}%)</span>
