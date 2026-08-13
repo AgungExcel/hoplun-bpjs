@@ -33,6 +33,56 @@
         .status-dot { width:9px; height:9px; border-radius:999px; display:inline-block; flex:0 0 auto; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    
+        /* Compact professional status icons */
+        .status-icon-wrap {
+            width: 26px !important;
+            height: 26px !important;
+            min-width: 26px !important;
+            max-width: 26px !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 0 0 26px !important;
+            line-height: 1 !important;
+        }
+        .status-icon-wrap svg,
+        .status-icon-wrap svg * {
+            width: 15px !important;
+            height: 15px !important;
+            max-width: 15px !important;
+            max-height: 15px !important;
+            min-width: 15px !important;
+            min-height: 15px !important;
+        }
+        .status-icon-wrap svg {
+            display: block !important;
+            overflow: visible !important;
+        }
+        .status-row {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            min-height: 30px !important;
+        }
+        .status-row .status-name {
+            font-size: 13px !important;
+            line-height: 1.2 !important;
+            font-weight: 600 !important;
+        }
+        .status-row .status-value {
+            font-size: 13px !important;
+            line-height: 1.2 !important;
+            font-weight: 700 !important;
+        }
+        .status-item {
+            margin-bottom: 10px !important;
+        }
+        .status-item .status-bar-track {
+            margin-top: 5px !important;
+        }
+
     </style>
 </head>
 <body class="min-h-screen py-4 px-3 sm:py-8 sm:px-6 font-sans text-slate-800 flex flex-col items-center">
@@ -227,7 +277,7 @@
                 
                 <!-- Pesan Tidak Ditemukan -->
                 <div id="trackNotFound" class="hidden text-center py-8">
-                    <svg class="w-10 h-10 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="status-icon-wrap mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <p class="text-sm font-bold text-slate-700">Data tidak ditemukan</p>
                     <p class="text-xs text-slate-500 mt-1">Pastikan ID benar atau Anda belum mendaftar.</p>
                 </div>
@@ -244,7 +294,7 @@
     <div id="successModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
         <div class="bg-white rounded-2xl p-6 text-center shadow-xl max-w-xs w-full relative z-10 animate-fade-in">
-            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+            <div class="status-icon-wrap bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <h3 class="text-base font-bold text-slate-900 mb-1">Berhasil Terkirim!</h3>
